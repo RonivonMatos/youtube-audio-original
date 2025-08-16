@@ -14,15 +14,20 @@ function clickAudioMenuItem() {
   const trackButton = document.querySelector(
     ".ytp-menuitem.ytp-audio-menu-item"
   );
+  const settingsButton = getSettingsButton();
 
-  if (!trackButton) return;
+  if (!trackButton) {
+    if (settingsButton) {
+      settingsButton.click();
+    }
+    return;
+  }
 
   const currentTrackContent = trackButton.getElementsByClassName(
     "ytp-menuitem-content"
   )[0];
   // Não seleciona se a faixa atual já é a original
   if (currentTrackContent.innerHTML.includes("original")) {
-    const settingsButton = getSettingsButton();
     if (settingsButton) {
       settingsButton.click();
     }
